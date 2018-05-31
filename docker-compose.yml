@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+
+  kotlin:
+    build: .
+    #command: bash -c "gradle clean" うまくいかなかったら一度これ叩くと解決するかもしれない
+    command: bash -c "gradle run"
+    volumes:
+    - .:/app
+
+
