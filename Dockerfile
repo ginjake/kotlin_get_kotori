@@ -1,10 +1,8 @@
 FROM openjdk:8-jdk-alpine
 RUN apk update \
-    && apk upgrade
-RUN apk add coreutils
-RUN apk add curl
-#RUN apk add bash
-#RUN apk add vim
+    && apk upgrade \
+	&& apk add coreutils curl	
+
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -66,6 +64,9 @@ RUN apk add --no-cache bash && \
     apk del --no-cache build-dependencies
 
 ENV PATH $PATH:/usr/lib/kotlinc/bin
+
+
+RUN apk del coreutils curl
 # コンテナのワークディレクトリの指定
 WORKDIR /app
 CMD ["kotlinc"]
